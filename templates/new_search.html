@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {# this "search" comes from base.html #}
+    <h2 style="text-align: center">"{{ search| title }}"</h2>
+    <p1 style="font-size: 30px">{{ no_result }}</p1>
+{# このrawで横に画像を広げられる #}
+    <div class="row">
+        {% for post in final_postings %}
+        {# you need to be careful for post.0 from [(1,2,3,)] #}
+        <div class="col s4">
+            <div class="card">
+        <div class="card-image">
+          <a href="{{ post.1 }}"><img src="{{ post.3 }}"></a>
+          <span class="card-title">{{ post.0 }}</span>
+        </div>
+        <div class="card-content">
+          <p>{{ post.0}}</p>
+        </div>
+        <div class="card-action">
+          <a href="{{ post.1 }}">{{ post.2 }}</a>
+        </div>
+            </div>
+    {% endfor %}
+    </div>
+
+
+{% endblock %}
